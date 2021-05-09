@@ -52,7 +52,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupBottomNavigationBar() {
-        val navGraphIds = listOf(R.navigation.home_graph, R.navigation.map_graph, R.navigation.profile_graph)
+        val navGraphIds = listOf(
+            R.navigation.home_graph,
+            R.navigation.map_graph,
+            R.navigation.factory_graph,
+            R.navigation.profile_graph
+        )
 
         // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(
