@@ -12,6 +12,11 @@
         android:title="Карта" />
 
     <item
+        android:id="@+id/factory_app_fragment"
+        android:icon="@drawable/ic_factory"
+        android:title="Заводы" />
+
+    <item
         android:id="@+id/profile_app_fragment"
         android:icon="@drawable/ic_user"
         android:title="Профиль" />

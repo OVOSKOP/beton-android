@@ -15,7 +15,6 @@ import com.kodexgroup.betonapp.R
 import com.kodexgroup.betonapp.database.server.ServerController
 import com.kodexgroup.betonapp.database.server.entities.Factory
 import com.kodexgroup.betonapp.utils.app
-import com.kodexgroup.betonapp.utils.findParentNavController
 import com.kodexgroup.betonapp.utils.getImage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
