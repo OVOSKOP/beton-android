@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BetonApp</string>
+
+    <string name="sale_price_strike"><strike>%1$d руб.</strike></string>
+    <string name="count_buy_mini_card">%1$d человек купили</string>
+    <string name="percent_sale_mini_card">- %1$d</string>
+    <string name="price_mini_card">%1$d руб.</string>
+
+    <string name="rating">%1$.1f%2$s</string>
+    <string name="factory_price_average">%1$d рублей за чек</string>
+    <string name="count_order">+%1$d человек купили здесь товары в прошлом месяце</string>
+</resources>

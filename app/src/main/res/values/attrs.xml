@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditTextHintView">
+        <attr name="hint" format="string" />
+        <attr name="password" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="DialogContentView">
+        <attr name="title" format="string" />
+        <attr name="iconBtn" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonGridView">
+        <attr name="titleBtn" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonMenuView">
+        <attr name="titleBtnMain" format="string" />
+        <attr name="iconBtnMain" format="reference" />
+        <attr name="backgroundBtn" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonTypeView">
+        <attr name="typeName" format="string" />
+        <attr name="typePreview" format="reference" />
+        <attr name="typeId" format="enum">
+            <enum name="concrete" value="0" />
+            <enum name="rent" value="1" />
+            <enum name="priming" value="2" />
+            <enum name="solution" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ToolbarView">
+        <attr name="search" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonFilterView">
+        <attr name="active" format="boolean" />
+        <attr name="text" format="string" />
+        <attr name="ratingCount" format="float" />
+        <attr name="ratingSuffix" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="EmptyView">
+        <attr name="headText" format="string" />
+        <attr name="subText" format="string" />
+        <attr name="actionLabel" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RatingView">
+        <attr name="rating" format="float" />
+        <attr name="textSize" format="dimension" />
+        <attr name="size" format="dimension" />
+        <attr name="suffix" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="tintNull" format="boolean" />
+        <attr name="countRating" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="image" format="reference" />
+    </declare-styleable>
+</resources>

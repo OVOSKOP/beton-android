@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map_app_fragment"
+    app:startDestination="@id/map_fragment">
+
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.kodexgroup.betonapp.screens.productlist.ProductListFragment"
+        android:label="Second"
+        tools:layout="@layout/content_product_list" />
+    <fragment
+        android:id="@+id/factoryFragment"
+        android:name="com.kodexgroup.betonapp.screens.factory.FactoryFragment"
+        android:label="FactoryFragment"
+        tools:layout="@layout/content_factory" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.kodexgroup.betonapp.screens.product.ProductFragment"
+        android:label="ProductFragment"
+        tools:layout="@layout/content_product">
+        <action
+            android:id="@+id/to_product"
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/to_product_list"
+        app:destination="@id/productListFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <action
+        android:id="@+id/to_product"
+        app:destination="@id/productFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <action
+        android:id="@+id/to_factory"
+        app:destination="@id/factoryFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.kodexgroup.betonapp.screens.app.map.MapAppFragment"
+        android:label="MapAppFragment"
+        tools:layout="@layout/content_map"/>
+</navigation>

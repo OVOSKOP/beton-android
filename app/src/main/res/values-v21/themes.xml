@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BetonApp.BlueButton">
+        <item name="backgroundTint">@color/blue_500</item>
+        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.BetonApp.YellowButton">
+        <item name="backgroundTint">@color/yellow_700</item>
+        <item name="fontFamily">@font/noto_sans</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.BetonApp.GridButton">
+        <item name="backgroundTint">@color/borders</item>
+        <item name="android:background">@drawable/ic_btn_grid_item</item>
+        <item name="fontFamily">@font/noto_sans</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/hint</item>
+    </style>
+</resources>

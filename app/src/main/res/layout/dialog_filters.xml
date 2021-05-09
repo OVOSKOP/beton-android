@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/miss_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/yellow_700"
+            android:text="Сброс"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/all_ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Готово"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/yellow_700"
+            app:cornerRadius="0dp"
+            android:elevation="0dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Общие фильтры"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        app:alignContent="stretch"
+        app:alignItems="stretch"
+        app:flexWrap="wrap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/dialog_sale_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:text="Скидка" />
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/dialog_newest_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:text="Новые"
+            tools:layout_editor_absoluteX="87dp" />
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/dialog_near_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:text="Рядом"
+            tools:layout_editor_absoluteX="171dp" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="16dp"
+        android:text="Рейтинг"
+
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        app:alignContent="stretch"
+        app:alignItems="stretch"
+        app:flexWrap="wrap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/rating_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:ratingCount="5" />
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/rating_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:ratingCount="4"
+            app:ratingSuffix="+"
+            tools:layout_editor_absoluteX="87dp" />
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/rating_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:ratingCount="3"
+            app:ratingSuffix="+"
+            app:text="Рядом"
+            tools:layout_editor_absoluteX="171dp"
+            tools:layout_editor_absoluteY="34dp" />
+
+        <com.kodexgroup.betonapp.utils.views.ButtonFilterView
+            android:id="@+id/rating_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:active="false"
+            app:ratingCount="2"
+            app:ratingSuffix="+"
+            app:text="Скидка"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="34dp" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
