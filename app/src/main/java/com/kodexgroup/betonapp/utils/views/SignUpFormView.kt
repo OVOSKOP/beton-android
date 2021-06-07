@@ -1,6 +1,7 @@
 package com.kodexgroup.betonapp.utils.views
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.AttributeSet
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.ProgressBar
 import androidx.navigation.findNavController
 import com.kodexgroup.betonapp.R
 import com.kodexgroup.betonapp.database.server.ServerController
+import com.kodexgroup.betonapp.utils.app
 import com.kodexgroup.betonapp.utils.hideKeyword
 import com.kodexgroup.betonapp.utils.json.JSON
 import kotlinx.coroutines.CoroutineScope
@@ -33,6 +35,7 @@ class SignUpFormView(context: Context, attributeSet: AttributeSet) : LinearLayou
     private val signUp: Button
 
     private lateinit var serverController: ServerController
+    private var userSharedPref: SharedPreferences? = null
 
     init {
         val inflater = context
@@ -41,6 +44,8 @@ class SignUpFormView(context: Context, attributeSet: AttributeSet) : LinearLayou
 
         if (!isInEditMode) {
             serverController = ServerController()
+            userSharedPref = context.getSharedPreferences(
+                "user", Context.MODE_PRIVATE)
         }
 
         name = root.findViewById(R.id.name_user_txt)
@@ -195,6 +200,14 @@ class SignUpFormView(context: Context, attributeSet: AttributeSet) : LinearLayou
                 withContext(Dispatchers.Main) {
                     hideKeyword()
                     val navController = findNavController()
+
+                    with (userSharedPref?.edit()) {
+                        this?.putString("user_login", login.text)
+
+                        this?.apply()
+                    }
+
+                    app.currentUser = serverController.userDAO.getUserByLogin(login.text)
 
                     navController.navigate(R.id.is_signed)
                 }

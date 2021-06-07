@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BetonApp</string>
+    <string name="app_name">Бетон Онлайн</string>
 
     <string name="sale_price_strike"><strike>%1$d руб.</strike></string>
     <string name="count_buy_mini_card">%1$d человек купили</string>
