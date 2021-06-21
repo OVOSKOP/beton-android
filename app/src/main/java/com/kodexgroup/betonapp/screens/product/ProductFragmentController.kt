@@ -91,56 +91,60 @@ class ProductFragmentController(private val fragment: Fragment, private val cont
                 favoriteCountTxt.text = favoriteCount.toString()
 
                 val favorites = fragment.app.currentUser?.favorites
-                val products = favorites?.get("products") as String
-                val listFavorites = products.split(",").toMutableList()
+                if (favorites != null) {
+                    val products = favorites?.get("products") as String
+                    val listFavorites = products.split(",").toMutableList()
 
-                if (productId in listFavorites) {
-                    isFavorite = true
-                    noteBtn.setImageResource(R.drawable.ic_bookmark)
-                }
-
-                noteBtn.setOnClickListener {
-                    if (!isFavorite) {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            listFavorites.remove("")
-                            listFavorites.add(productId)
-
-                            favorites.put("products", listFavorites.joinToString(","))
-
-                            val dao = ServerController().userDAO
-                            dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
-                            ServerController().productDAO.modify(productId, favoriteCount + 1)
-                            fragment.app.currentUser!!.favorites = favorites
-
-                            favoriteCount += 1
-                            withContext(Dispatchers.Main) {
-                                favoriteCountTxt.text = favoriteCount.toString()
-                                noteBtn.setImageResource(R.drawable.ic_bookmark)
-                            }
-                        }
-
-                    } else {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            listFavorites.remove("")
-                            listFavorites.remove(productId)
-
-                            favorites.put("products", listFavorites.joinToString(","))
-
-                            val dao = ServerController().userDAO
-                            dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
-                            ServerController().productDAO.modify(productId, favoriteCount - 1)
-                            fragment.app.currentUser!!.favorites = favorites
-
-                            favoriteCount -= 1
-                            withContext(Dispatchers.Main) {
-                                favoriteCountTxt.text = favoriteCount.toString()
-                                noteBtn.setImageResource(R.drawable.ic_bookmark_empty)
-                            }
-                        }
-
+                    if (productId in listFavorites) {
+                        isFavorite = true
+                        noteBtn.setImageResource(R.drawable.ic_bookmark)
                     }
 
-                    isFavorite = !isFavorite
+                    noteBtn.setOnClickListener {
+                        if (!isFavorite) {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                listFavorites.remove("")
+                                listFavorites.add(productId)
+
+                                favorites.put("products", listFavorites.joinToString(","))
+
+                                val dao = ServerController().userDAO
+                                dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
+                                ServerController().productDAO.modify(productId, favoriteCount + 1)
+                                fragment.app.currentUser!!.favorites = favorites
+
+                                favoriteCount += 1
+                                withContext(Dispatchers.Main) {
+                                    favoriteCountTxt.text = favoriteCount.toString()
+                                    noteBtn.setImageResource(R.drawable.ic_bookmark)
+                                }
+                            }
+
+                        } else {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                listFavorites.remove("")
+                                listFavorites.remove(productId)
+
+                                favorites.put("products", listFavorites.joinToString(","))
+
+                                val dao = ServerController().userDAO
+                                dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
+                                ServerController().productDAO.modify(productId, favoriteCount - 1)
+                                fragment.app.currentUser!!.favorites = favorites
+
+                                favoriteCount -= 1
+                                withContext(Dispatchers.Main) {
+                                    favoriteCountTxt.text = favoriteCount.toString()
+                                    noteBtn.setImageResource(R.drawable.ic_bookmark_empty)
+                                }
+                            }
+
+                        }
+
+                        isFavorite = !isFavorite
+                    }
+                } else {
+                    noteBtn.isEnabled = false
                 }
 
                 description.text = productDescription

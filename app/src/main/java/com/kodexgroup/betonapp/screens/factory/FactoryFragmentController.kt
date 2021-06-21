@@ -120,59 +120,62 @@ class FactoryFragmentController(private val fragment: Fragment, private val cont
                 favoriteCountTxt.text = favoriteCount.toString()
 
                 val favorites = fragment.app.currentUser?.favorites
-                val factoriesList = favorites?.get("factories") as String
-                val listFavorites = factoriesList.split(",").toMutableList()
+                if (favorites != null) {
+                    val factoriesList = favorites.get("factories") as String
+                    val listFavorites = factoriesList.split(",").toMutableList()
 
-                if (factoryId in listFavorites) {
-                    isFavorite = true
-                    noteBtn.setImageResource(R.drawable.ic_bookmark)
-                }
-
-
-                noteBtn.setOnClickListener {
-                    if (!isFavorite) {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            listFavorites.remove("")
-                            listFavorites.add(factoryId)
-
-                            favorites.put("factories", listFavorites.joinToString(","))
-
-                            val dao = ServerController().userDAO
-                            dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
-                            ServerController().factoryDAO.modify(factoryId, favoriteCount + 1)
-                            fragment.app.currentUser!!.favorites = favorites
-
-                            favoriteCount += 1
-                            withContext(Dispatchers.Main) {
-                                favoriteCountTxt.text = favoriteCount.toString()
-                                noteBtn.setImageResource(R.drawable.ic_bookmark)
-                            }
-                        }
-
-                    } else {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            listFavorites.remove("")
-                            listFavorites.remove(factoryId)
-
-                            favorites.put("factories", listFavorites.joinToString(","))
-
-                            val dao = ServerController().userDAO
-                            dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
-                            ServerController().factoryDAO.modify(factoryId, favoriteCount - 1)
-                            fragment.app.currentUser!!.favorites = favorites
-
-                            favoriteCount -= 1
-                            withContext(Dispatchers.Main) {
-                                favoriteCountTxt.text = favoriteCount.toString()
-                                noteBtn.setImageResource(R.drawable.ic_bookmark_empty)
-                            }
-                        }
-
+                    if (factoryId in listFavorites) {
+                        isFavorite = true
+                        noteBtn.setImageResource(R.drawable.ic_bookmark)
                     }
 
-                    isFavorite = !isFavorite
-                }
 
+                    noteBtn.setOnClickListener {
+                        if (!isFavorite) {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                listFavorites.remove("")
+                                listFavorites.add(factoryId)
+
+                                favorites.put("factories", listFavorites.joinToString(","))
+
+                                val dao = ServerController().userDAO
+                                dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
+                                ServerController().factoryDAO.modify(factoryId, favoriteCount + 1)
+                                fragment.app.currentUser!!.favorites = favorites
+
+                                favoriteCount += 1
+                                withContext(Dispatchers.Main) {
+                                    favoriteCountTxt.text = favoriteCount.toString()
+                                    noteBtn.setImageResource(R.drawable.ic_bookmark)
+                                }
+                            }
+
+                        } else {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                listFavorites.remove("")
+                                listFavorites.remove(factoryId)
+
+                                favorites.put("factories", listFavorites.joinToString(","))
+
+                                val dao = ServerController().userDAO
+                                dao.modifyFavorite(fragment.app.currentUser!!.id, favorites)
+                                ServerController().factoryDAO.modify(factoryId, favoriteCount - 1)
+                                fragment.app.currentUser!!.favorites = favorites
+
+                                favoriteCount -= 1
+                                withContext(Dispatchers.Main) {
+                                    favoriteCountTxt.text = favoriteCount.toString()
+                                    noteBtn.setImageResource(R.drawable.ic_bookmark_empty)
+                                }
+                            }
+
+                        }
+
+                        isFavorite = !isFavorite
+                    }
+                } else {
+                    noteBtn.isEnabled = false
+                }
 
                 reviewBlock.addReviews(listOf(), factoryRate.toFloat())
 
